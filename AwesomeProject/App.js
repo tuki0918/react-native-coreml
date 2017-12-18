@@ -31,7 +31,7 @@ export default class App extends Component<{}> {
     componentDidMount() {
 
         setTimeout(()=> {
-            RNCoreML.addEvent('ABC').then(name => {
+            RNCoreML.findEvents('ABC').then(name => {
                 this.setState({ content: name });
             });
         }, 10000);

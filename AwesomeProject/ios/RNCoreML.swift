@@ -7,20 +7,17 @@
 //
 
 import Foundation
-import CoreML
-import Vision
-import UIKit
 
-@objc(RNCoreML)
-class RNCoreML: NSObject {
-  
-  @objc(addEvent:success:reject:)
-  func addEvent(name: String, success: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
-    do {
-      success(name);
-    } catch {
-      reject(nil, nil, nil);
-    }
-  }
-  
-}
+ @objc(RNCoreML)
+ class RNCoreML: NSObject {
+
+   @objc(findEvents:findEventsWithResolver:rejecter:)
+   func findEvents(name: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
+     do {
+       resolve(name);
+     } catch {
+       reject(nil, nil, nil);
+     }
+   }
+
+ }
