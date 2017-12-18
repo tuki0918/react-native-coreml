@@ -1,5 +1,5 @@
 //
-//  CalendarManagerBridge.m
+//  RNCoreMLBridge.m
 //  AwesomeProject
 //
 //  Created by 山本雄大 on 2017/12/18.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
 
-@interface RCT_EXTERN_MODULE(CalendarManager, NSObject)
+@interface RCT_EXTERN_MODULE(RNCoreML, NSObject)
 
 RCT_EXTERN_METHOD(addEvent:(NSString *)name success:(RCTPromiseResolveBlock)success reject:(RCTPromiseRejectBlock)reject)
 

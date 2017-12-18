@@ -1,5 +1,5 @@
 //
-//  CalendarManager.swift
+//  RNCoreML.swift
 //  AwesomeProject
 //
 //  Created by 山本雄大 on 2017/12/18.
@@ -7,9 +7,12 @@
 //
 
 import Foundation
+import CoreML
+import Vision
+import UIKit
 
-@objc(CalendarManager)
-class CalendarManager: NSObject {
+@objc(RNCoreML)
+class RNCoreML: NSObject {
   
   @objc(addEvent:success:reject:)
   func addEvent(name: String, success: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
