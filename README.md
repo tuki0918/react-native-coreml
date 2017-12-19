@@ -1,1 +1,1 @@
-# react-native-on-coreml
+# react-native-coreml
