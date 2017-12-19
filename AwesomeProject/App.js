@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import {
+    Image,
     Platform,
     StyleSheet,
     Text,
@@ -25,34 +26,44 @@ const instructions = Platform.select({
 export default class App extends Component<{}> {
 
     state = {
-        content: '',
+        imageURL: 'https://cdn-ak2.f.st-hatena.com/images/fotolife/t/tuki0918/20171219/20171219221435.jpg',
+        identifier: '-',
+        confidence: 0
     };
 
     componentDidMount() {
-
-        setTimeout(()=> {
-            RNCoreML.findEvents('ABC').then(name => {
-                this.setState({ content: name });
-            });
-        }, 10000);
-
+        this.predict();
     }
 
+    /**
+     * 画像の分類予測
+     */
+    predict = () => {
+        const { imageURL } = this.state;
+        RNCoreML.predict(imageURL).then(data => {
+            this.setState({
+                identifier: data.identifier,
+                confidence: data.confidence
+            });
+        });
+    };
+
     render() {
+
+        const { imageURL, identifier, confidence } = this.state;
+
         return (
             <View style={styles.container}>
-              <Text style={styles.welcome}>
-                Welcome to React Native!
-              </Text>
-              <Text style={styles.instructions}>
-                To get started, edit App.js
-              </Text>
-              <Text style={styles.instructions}>
-                  {instructions}
-              </Text>
-              <Text style={styles.instructions}>
-                  {this.state.content}
-              </Text>
+                <Text style={styles.welcome}>
+                    Welcome to React Native!
+                </Text>
+                <Image style={{width: 150, height: 150}} source={{uri: imageURL}} />
+                <Text style={styles.instructions}>
+                    identifier: {identifier}
+                </Text>
+                <Text style={styles.instructions}>
+                    confidence: {confidence}
+                </Text>
             </View>
         );
     }
@@ -73,6 +84,6 @@ const styles = StyleSheet.create({
     instructions: {
         textAlign: 'center',
         color: '#333333',
-        marginBottom: 5,
+        marginTop: 5,
     },
 });

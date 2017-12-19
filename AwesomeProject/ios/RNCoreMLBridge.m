@@ -11,6 +11,6 @@
 
 @interface RCT_EXTERN_MODULE(RNCoreML, NSObject)
 
-RCT_EXTERN_METHOD(findEvents:(NSString *)name findEventsWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(predict:(NSString *)source findEventsWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
 @end
